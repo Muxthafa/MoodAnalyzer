@@ -10,9 +10,10 @@ public class MoodAnalyzer
 	
 	/**
 	 * constructor with no parameter
+	 * empty message is assigned
 	 */
 	public MoodAnalyzer(){
-		
+		this.message="";
 	}
 	
 	/**
@@ -30,12 +31,14 @@ public class MoodAnalyzer
 	 */
 	public String analyseMood() throws MoodAnalysisException{
 		try {
-			if (message.contains("sad"))
+			if (message.length() ==0)
+                throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.ENTERED_EMPTY, "Please enter non empty message");
+			else if (message.contains("sad"))
 				return "SAD";
 			else
 				return "HAPPY";
 		} catch (NullPointerException e) {
-			throw new MoodAnalysisException("HAPPY");
+			throw new MoodAnalysisException(MoodAnalysisException.ExceptionType.ENTERED_NULL, "Please enter sad or happy");
 		}
 	}
 }

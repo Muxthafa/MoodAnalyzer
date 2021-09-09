@@ -44,7 +44,7 @@ public class MoodAnalyzerTest
 	}
     
     /**
-     * @method to expect happy when null is passed
+     * @method to handle exception when null is passed
      */
     @Test
 	public void givenNullMoodShouldHandleException()  {
@@ -53,7 +53,21 @@ public class MoodAnalyzerTest
 			moodAnalyser.analyseMood();
 			
 		} catch (MoodAnalysisException e) {
-			Assert.assertEquals("HAPPY", e.getMessage());
+			Assert.assertEquals("Please enter sad or happy", e.getMessage());
+		}
+	}
+    
+    /**
+     * @method to handle exception when empty message is passed
+     */
+    @Test
+	public void givenEmptyMoodShouldHandleException()  {
+		MoodAnalyzer moodAnalyser = new MoodAnalyzer();
+		try {
+			moodAnalyser.analyseMood();
+			
+		} catch (MoodAnalysisException e) {
+			Assert.assertEquals("Please enter non empty message", e.getMessage());
 		}
 	}
 }
