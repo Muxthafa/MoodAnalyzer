@@ -6,7 +6,28 @@ package com.bridgelabz.maven.moodAnalyzer;
  */
 public class MoodAnalyzer
 {
-	public String analyseMood(String message) {
+	String message;
+	
+	/**
+	 * constructor with no parameter
+	 */
+	public MoodAnalyzer(){
+		
+	}
+	
+	/**
+	 * constructor with parameter
+	 * @param message
+	 */
+	public MoodAnalyzer(String message){
+		this.message = message;
+	}
+	
+	/**
+	 * @method to check mood
+	 * @return either SAD or HAPPY
+	 */
+	public String analyseMood() {
 		if(message.contains(("sad"))){
 			return "SAD";
 		}else {
